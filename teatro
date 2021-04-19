@@ -1,0 +1,141 @@
+
+/*1. Projeto Bilheteria:
+
+Um teatro possui 600 lugares dispostos em 15 fileiras com 40 poltronas cada.
+
+Deseja-se um sistema de controle de ocupação que ofereça as seguintes opções, através de um seletor:
+
+0.	Finalizar
+1.	Reservar poltrona
+2.	Mapa de ocupação
+3.	Faturamento
+A opção 1 deverá solicitar a informação da fileira e da poltrona. Os dados devem ser consistidos no sentido da garantia de serem válidos. Caso o lugar esteja vago, efetuar a reserva e informar o usuário do sucesso da operação. Caso o lugar já se encontre ocupado, alertar o usuário com uma mensagem.
+
+A opção 2 deverá gerar na tela um “mapa” de ocupação do teatro com uma legenda onde:
+
+‘.’ representa lugar vago
+‘#’ representa lugar ocupado
+A opção 3 deverá apresentar na tela as seguintes informações:
+
+Qtde de lugares ocupados: 	999
+Valor da bilheteria: 		R$ 9999,99
+Sabendo-se que:
+
+Fileiras 1 a 5:       R$ 50,00
+Fileiras 6 a 10:     R$ 30,00
+Fileiras 11 a 15:   R$ 15,00
+\*
+#include <iostream>
+#include <stdlib.h>
+using namespace std;
+
+int main (){
+	int opcao, valor,enter;
+	int cont=0;
+	int cont1=0;
+	int cont2=0;
+	int cont3=0;
+	int cont4=0;
+	int cont5=0;
+	int fileira=0;
+	int poltrona=0;
+	int c1=0;
+	int c=0;
+	int c2=0;
+	int c3=0;
+	int f,p;
+	bool teatro[15][40];
+	for (f=0; f<15;f++){
+	for (p=0; p<40; p++){
+teatro[f][p] = 0;	
+}
+}
+	do {
+		cout << "0. Finalizar" << endl;
+		cout << "1. Reservar" << endl;
+		cout << "2. Mapa" << endl;
+		cout << "3. Faturamento" << endl;
+		cout << "Selecione a opcao: ";
+		cin>> opcao;
+		system("CLS");
+		if(opcao == 1)
+		{
+		do {
+			cout << "digite a fileira" << endl;
+			cin >> fileira;
+		}while (fileira < 1 || fileira > 15);
+			do{ 
+			cout << "digite a poltrona" << endl;
+			cin >> poltrona; 
+			}while(poltrona < 1 || poltrona > 40);
+
+        	if (fileira >= 1 && fileira<=5 ){
+			cont++;
+			c2++;
+			}
+        	if (fileira >= 6 && fileira<=10 ){
+			cont1++;
+			c1++;
+			}
+			if (fileira >= 11 && fileira <=15){ 
+			cont2++;
+			c++;
+			} 
+			if (teatro[fileira-1][poltrona-1] == 1){
+				cout << "poltrona ja está sendo ultilizada"<<endl<<"digite 1 para voltar: ";
+				cin >> enter;
+  	   	    }     
+               
+			if (teatro[fileira][poltrona] == 0){
+			teatro[fileira-1][poltrona-1] = 1;
+		    cout <<"realizado com sucesso" ;}
+            
+			
+			
+		    
+			 
+			system("CLS");
+		
+		}
+		
+		if (opcao == 2)
+		{
+cout << "1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40"<<endl;
+
+	for (f=0; f<15;f++){
+		for (p=0; p<40; p++){
+		// não consegui implementar o ., sempre que jogava esse if aparecia o . só que com o 0 ou 1
+		//if (teatro[f][p]==0){
+		//cout << ".";
+		//}	 
+ 	 	 //if (teatro[f][p]==1){
+		//		cout << "#";
+	 	 //	}
+			cout << teatro[f][p] << "  " ;
+			
+		}
+		cout <<"   " << f << endl;
+	}
+	
+		}
+		
+		if(opcao == 3){
+		
+			for (int i = 0 ; i<1 ; i++)
+			{
+		cont3 = cont*50;
+		cont4 = cont1*30;	
+		cont5 = cont2*15;	
+        valor = cont3+cont4+cont5;
+        c3 = c1+c2+c3;
+		cout << "valor: " << valor<< endl<<endl<<endl;
+		cout << "Quantidade de assentos" << c3 << endl<<"aperte 1 para voltar: ";
+		cin >> enter;
+			}
+			system("CLS");
+	}
+	
+	}
+	while (opcao!=0);
+	
+	}
